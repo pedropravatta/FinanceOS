@@ -1,6 +1,9 @@
 import pandas as pd
 import unicodedata
 import re
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def normalize_text(text):
     if pd.isna(text) or not isinstance(text, str):
@@ -16,8 +19,8 @@ def normalize_text(text):
     return text
 
 def run_saneamento():
-    input_path = '/home/ubuntu/projects/finance-os-e55f724c/compras_raw.csv'
-    output_path = '/home/ubuntu/projects/finance-os-e55f724c/compras_saneada.csv'
+    input_path = BASE_DIR / 'compras_raw.csv'
+    output_path = BASE_DIR / 'compras_saneada.csv'
     
     df = pd.read_csv(input_path)
     initial_count = len(df)

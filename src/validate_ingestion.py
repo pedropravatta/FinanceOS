@@ -3,6 +3,9 @@ import numpy as np
 import os
 import json
 import re
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 class IngestionValidator:
     def __init__(self, excel_path, csv_path):
@@ -59,7 +62,7 @@ class IngestionValidator:
         duplicates = self.df_raw[self.df_raw.duplicated(subset=['origem_aba', 'descricao', 'valor_total'], keep=False)]
         
         # 3. Gerar Excel de Validação
-        with pd.ExcelWriter('/home/ubuntu/projects/finance-os-e55f724c/validacao_ingestao.xlsx') as writer:
+        with pd.ExcelWriter(BASE_DIR / 'validacao_ingestao.xlsx') as writer:
             self.df_raw.to_excel(writer, sheet_name='Transações Consolidadas', index=False)
             
             # Resumo por Mês
@@ -90,13 +93,13 @@ class IngestionValidator:
             "Grades de rateio (Pedro/Rafael/Renan) que não são transações individuais"
         ]
 
-        with open('/home/ubuntu/projects/finance-os-e55f724c/validation_stats.json', 'w') as f:
+        with open(BASE_DIR / 'validation_stats.json', 'w') as f:
             json.dump(self.stats, f, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
     validator = IngestionValidator(
-        '/home/ubuntu/projects/finance-os-e55f724c/Contas Pedro.xlsx',
-        '/home/ubuntu/projects/finance-os-e55f724c/compras_raw.csv'
+        BASE_DIR / 'Contas Pedro.xlsx',
+        BASE_DIR / 'compras_raw.csv'
     )
     validator.run_validation()
     print("Validação concluída.")

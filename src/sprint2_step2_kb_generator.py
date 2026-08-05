@@ -1,8 +1,11 @@
 import pandas as pd
 from collections import Counter
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def generate_kb_suggestions():
-    df = pd.read_csv('/home/ubuntu/projects/finance-os-e55f724c/compras_saneada.csv')
+    df = pd.read_csv(BASE_DIR / 'compras_saneada.csv')
     
     # Contar termos mais comuns para criar o palavras.csv
     descriptions = df['descricao_normalizada'].tolist()
@@ -296,7 +299,7 @@ def generate_kb_suggestions():
     ]
     
     df_palavras = pd.DataFrame(kb_palavras, columns=['palavra', 'estabelecimento'])
-    df_palavras.to_csv('/home/ubuntu/projects/finance-os-e55f724c/palavras.csv', index=False, encoding='utf-8-sig')
+    df_palavras.to_csv(BASE_DIR / 'palavras.csv', index=False, encoding='utf-8-sig')
     
     # Mapeamento de estabelecimentos para categorias
     kb_estabelecimentos = [
@@ -338,8 +341,8 @@ def generate_kb_suggestions():
     ]
     
     df_estab = pd.DataFrame(kb_estabelecimentos, columns=['estabelecimento', 'categoria', 'subcategoria'])
-    df_estab.to_excel('/home/ubuntu/projects/finance-os-e55f724c/estabelecimentos.xlsx', index=False) # Temp para conferência
-    df_estab.to_csv('/home/ubuntu/projects/finance-os-e55f724c/estabelecimentos.csv', index=False, encoding='utf-8-sig')
+    df_estab.to_excel(BASE_DIR / 'estabelecimentos.xlsx', index=False) # Temp para conferência
+    df_estab.to_csv(BASE_DIR / 'estabelecimentos.csv', index=False, encoding='utf-8-sig')
 
 if __name__ == "__main__":
     generate_kb_suggestions()

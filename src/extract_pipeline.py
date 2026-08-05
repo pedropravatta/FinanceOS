@@ -3,6 +3,9 @@ import numpy as np
 import os
 import re
 import json
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 class FinanceExtractor:
     def __init__(self, file_path):
@@ -148,13 +151,13 @@ class FinanceExtractor:
         
         # Salvar CSV
         output_df = pd.DataFrame(self.raw_data)
-        output_df.to_csv('/home/ubuntu/projects/finance-os-e55f724c/compras_raw.csv', index=False, encoding='utf-8-sig')
+        output_df.to_csv(BASE_DIR / 'compras_raw.csv', index=False, encoding='utf-8-sig')
         
         # Salvar Relatório
-        with open('/home/ubuntu/projects/finance-os-e55f724c/extraction_report.json', 'w', encoding='utf-8') as f:
+        with open(BASE_DIR / 'extraction_report.json', 'w', encoding='utf-8') as f:
             json.dump(self.report, f, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
-    extractor = FinanceExtractor('/home/ubuntu/projects/finance-os-e55f724c/Contas Pedro.xlsx')
+    extractor = FinanceExtractor(BASE_DIR / 'Contas Pedro.xlsx')
     extractor.run()
     print("Extração concluída com sucesso.")

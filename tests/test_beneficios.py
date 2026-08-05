@@ -33,7 +33,7 @@ def setup_test_environment(tmpdir_factory):
         "cashback": {
             "geral": 0.008,
             "categorias": {
-                "Streaming": 0.05,
+                "Assinaturas": 0.05,
                 "Lazer": 0.03
             }
         }

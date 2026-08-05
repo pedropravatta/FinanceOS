@@ -1,11 +1,14 @@
 import pandas as pd
 import json
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def run_classifier():
     # Carregar dados
-    df = pd.read_csv('/home/ubuntu/projects/finance-os-e55f724c/compras_saneada.csv')
-    df_palavras = pd.read_csv('/home/ubuntu/projects/finance-os-e55f724c/palavras.csv')
-    df_estab = pd.read_csv('/home/ubuntu/projects/finance-os-e55f724c/estabelecimentos.csv')
+    df = pd.read_csv(BASE_DIR / 'compras_saneada.csv')
+    df_palavras = pd.read_csv(BASE_DIR / 'palavras.csv')
+    df_estab = pd.read_csv(BASE_DIR / 'estabelecimentos.csv')
     
     # Criar dicionários para busca rápida
     palavras_map = dict(zip(df_palavras['palavra'], df_palavras['estabelecimento']))
@@ -42,7 +45,7 @@ def run_classifier():
             df.at[idx, 'confianca_classificacao'] = 10 # Baixa confiança
             
     # Salvar resultado
-    df.to_csv('/home/ubuntu/projects/finance-os-e55f724c/compras_classificadas.csv', index=False, encoding='utf-8-sig')
+    df.to_csv(BASE_DIR / 'compras_classificadas.csv', index=False, encoding='utf-8-sig')
     
     # Gerar métricas para o relatório
     total = len(df)
@@ -60,7 +63,7 @@ def run_classifier():
         "exemplos_revisao": nao_classificados['descricao'].head(20).tolist()
     }
     
-    with open('/home/ubuntu/projects/finance-os-e55f724c/classification_metrics.json', 'w', encoding='utf-8') as f:
+    with open(BASE_DIR / 'classification_metrics.json', 'w', encoding='utf-8') as f:
         json.dump(report_data, f, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
