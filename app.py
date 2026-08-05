@@ -28,11 +28,33 @@ else:
     try:
         df = pd.read_csv(CSV_PATH)
 
+        # 1. Validar as colunas básicas esperadas
+        required_cols = ["descricao", "valor_total", "categoria", "melhor_cartao", "cashback_melhor_cartao"]
+        missing_cols = [col for col in required_cols if col not in df.columns]
+
         # Encontrar dinamicamente as colunas de cashback de cada cartão
         cashback_cols = [col for col in df.columns if col.startswith("cashback_") and col != "cashback_melhor_cartao"]
 
-        if not cashback_cols:
-            st.error("Nenhuma coluna de cashback de cartão encontrada no arquivo.")
+        if missing_cols or not cashback_cols:
+            st.error("⚠️ Estrutura de dados incompatível detectada em `compras_comparativo.csv`.")
+
+            if missing_cols:
+                st.write("**Colunas obrigatórias ausentes:**")
+                for col in missing_cols:
+                    st.markdown(f"- `{col}`")
+
+            if not cashback_cols:
+                st.write("- **Nenhuma coluna de cashback de cartão encontrada** (esperado colunas no padrão `cashback_<NomeDoCartao>`).")
+
+            st.info(
+                """
+                Por favor, execute o pipeline completo para gerar novamente o arquivo com todas as colunas necessárias:
+
+                ```bash
+                python run.py
+                ```
+                """
+            )
         else:
             # Mapear os nomes reais dos cartões
             card_sums = {}
