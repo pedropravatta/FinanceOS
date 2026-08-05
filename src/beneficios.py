@@ -1,6 +1,9 @@
 import pandas as pd
 import json
 import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 class BenefitsEngine:
     def __init__(self, classified_data_path, card_rules_dir):
@@ -23,7 +26,7 @@ class BenefitsEngine:
         if not card_config:
             return 0.0
 
-        value = pd.to_numeric(row["valor_total"], errors=\'coerce\')
+        value = pd.to_numeric(row["valor_total"], errors='coerce')
         if pd.isna(value): return 0.0 # Retorna 0 se o valor não for numérico
         category = row["categoria"]
         
@@ -62,7 +65,7 @@ class BenefitsEngine:
 
         # Salvar o resultado
         self.df_classified.to_csv(
-            '/home/ubuntu/projects/finance-os-e55f724c/compras_comparativo.csv', 
+            BASE_DIR / 'compras_comparativo.csv',
             index=False, 
             encoding='utf-8-sig'
         )
@@ -70,8 +73,8 @@ class BenefitsEngine:
 
 if __name__ == "__main__":
     engine = BenefitsEngine(
-        classified_data_path='/home/ubuntu/projects/finance-os-e55f724c/compras_classificadas.csv',
-        card_rules_dir='/home/ubuntu/projects/finance-os-e55f724c/regras/cartoes'
+        classified_data_path=BASE_DIR / 'compras_classificadas.csv',
+        card_rules_dir=BASE_DIR / 'rules'
     )
     engine.run_comparison()
     print("Comparativo de cashback gerado com sucesso.")
