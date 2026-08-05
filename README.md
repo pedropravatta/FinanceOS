@@ -16,12 +16,53 @@ O objetivo deste projeto é transformar uma planilha financeira em uma plataform
 
 - `src/` - Código do projeto
 - `rules/` - Regras dos cartões
-- `data/` - Arquivos de dados
 - `docs/` - Documentação
-- `tests/` - Testes
+- `tests/` - Testes unitários do projeto
+- `run.py` - Script unificado de execução do pipeline completo
+- `app.py` - Interface visual interativa com Streamlit
+- `requirements.txt` - Gerenciamento de dependências
+
+## Instalação e Configuração
+
+### Pré-requisitos
+Certifique-se de ter o **Python 3.8+** instalado em sua máquina.
+
+### Instalação de Dependências
+Instale as dependências necessárias executando o seguinte comando a partir da raiz do repositório:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Como Executar
+
+### 1. Preparação dos Dados
+Para rodar o pipeline completo, coloque a planilha original de gastos nomeada como **`Contas Pedro.xlsx`** no diretório raiz do projeto.
+
+### 2. Execução do Pipeline Completo
+Rode o script unificado `run.py` a partir da raiz do repositório para executar todas as etapas sequencialmente (extração, validação, normalização, base de conhecimento, classificação semântica e cálculo de cashback):
+
+```bash
+python run.py
+```
+
+### 3. Execução dos Testes Automatizados
+Para rodar a suíte de testes unitários com o `pytest`, execute:
+
+```bash
+PYTHONPATH=src pytest
+```
+
+### 4. Execução do Dashboard Interativo (Streamlit)
+Para visualizar os resultados do comparativo de cashback de forma visual e interativa através de uma página web local, execute:
+
+```bash
+streamlit run app.py
+```
 
 ## Status
 
-- ✅ Sprint 1 - Ingestão de dados
-- ✅ Sprint 2 - Classificação automática
-- ⏳ Sprint 3 - Motor de cashback
+- ✅ Sprint 1 - Ingestão de dados (Pronto)
+- ✅ Sprint 2 - Classificação automática (Pronto)
+- ✅ Sprint 3 - Motor de cashback e Portabilidade (Pronto)
+- ✅ Sprint 4 - Dashboard Interativo de Cashback (Pronto)
