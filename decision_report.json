@@ -1,0 +1,78 @@
+{
+    "melhor_cartao_geral": "Inter",
+    "cashback_otimizado_total": 12.6,
+    "ranking_cartoes": [
+        "Inter",
+        "XP",
+        "Nubank"
+    ],
+    "resumo_cartoes": {
+        "Nubank": {
+            "cashback_total": 2.5,
+            "diferenca_absoluta_vs_melhor_unico": 6.5,
+            "diferenca_percentual_vs_melhor_unico": 72.22,
+            "diferenca_absoluta_vs_otimizado": 10.1,
+            "diferenca_percentual_vs_otimizado": 80.16
+        },
+        "Inter": {
+            "cashback_total": 9.0,
+            "diferenca_absoluta_vs_melhor_unico": 0.0,
+            "diferenca_percentual_vs_melhor_unico": 0.0,
+            "diferenca_absoluta_vs_otimizado": 3.6,
+            "diferenca_percentual_vs_otimizado": 28.57
+        },
+        "XP": {
+            "cashback_total": 7.86,
+            "diferenca_absoluta_vs_melhor_unico": 1.14,
+            "diferenca_percentual_vs_melhor_unico": 12.67,
+            "diferenca_absoluta_vs_otimizado": 4.74,
+            "diferenca_percentual_vs_otimizado": 37.62
+        }
+    },
+    "melhor_cartao_por_categoria": {
+        "Assinaturas": "XP",
+        "Lazer": "XP",
+        "Mercado": "Inter",
+        "Restaurante": "Inter",
+        "Saúde": "Inter",
+        "Transporte": "Inter"
+    },
+    "perda_potencial_por_categoria": {
+        "Assinaturas": {
+            "cashback_otimizado": 2.5,
+            "perda_Nubank": 2.25,
+            "perda_Inter": 2.0,
+            "perda_XP": 0.0
+        },
+        "Lazer": {
+            "cashback_otimizado": 2.4,
+            "perda_Nubank": 2.0,
+            "perda_Inter": 1.6,
+            "perda_XP": 0.0
+        },
+        "Mercado": {
+            "cashback_otimizado": 2.0,
+            "perda_Nubank": 1.0,
+            "perda_Inter": 0.0,
+            "perda_XP": 0.4
+        },
+        "Restaurante": {
+            "cashback_otimizado": 5.0,
+            "perda_Nubank": 4.5,
+            "perda_Inter": 0.0,
+            "perda_XP": 4.2
+        },
+        "Saúde": {
+            "cashback_otimizado": 0.4,
+            "perda_Nubank": 0.2,
+            "perda_Inter": 0.0,
+            "perda_XP": 0.08
+        },
+        "Transporte": {
+            "cashback_otimizado": 0.3,
+            "perda_Nubank": 0.15,
+            "perda_Inter": 0.0,
+            "perda_XP": 0.06
+        }
+    }
+}
