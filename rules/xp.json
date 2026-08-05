@@ -1,0 +1,10 @@
+{
+  "nome": "XP",
+  "cashback": {
+    "geral": 0.008,
+    "categorias": {
+      "Assinaturas": 0.05,
+      "Lazer": 0.03
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "nome": "Inter",
+  "cashback": {
+    "geral": 0.01,
+    "categorias": {
+      "Restaurante": 0.05,
+      "Delivery": 0.05
+    }
+  }
+}
