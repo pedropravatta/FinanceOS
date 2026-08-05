@@ -22,7 +22,7 @@ class FinanceExtractor:
         # Meses em português para identificar as abas
         months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", 
                   "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
-        pattern = re.compile(f"({'|'.join(months)})(\d{{2}})?", re.IGNORECASE)
+        pattern = re.compile(f"({'|'.join(months)})(\\d{{2}})?", re.IGNORECASE)
         
         monthly_sheets = []
         for sheet in self.xl.sheet_names:

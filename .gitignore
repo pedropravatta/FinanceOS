@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+compras_raw.csv
+compras_saneada.csv
+palavras.csv
+estabelecimentos.csv
+estabelecimentos.xlsx
+compras_classificadas.csv
+compras_comparativo.csv
+extraction_report.json
+classification_metrics.json
+validation_stats.json
+validacao_ingestao.xlsx
