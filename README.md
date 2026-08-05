@@ -19,6 +19,7 @@ O objetivo deste projeto é transformar uma planilha financeira em uma plataform
 - `docs/` - Documentação
 - `tests/` - Testes unitários do projeto
 - `run.py` - Script unificado de execução do pipeline completo
+- `app.py` - Interface visual interativa com Streamlit
 - `requirements.txt` - Gerenciamento de dependências
 
 ## Instalação e Configuração
@@ -52,8 +53,16 @@ Para rodar a suíte de testes unitários com o `pytest`, execute:
 PYTHONPATH=src pytest
 ```
 
+### 4. Execução do Dashboard Interativo (Streamlit)
+Para visualizar os resultados do comparativo de cashback de forma visual e interativa através de uma página web local, execute:
+
+```bash
+streamlit run app.py
+```
+
 ## Status
 
 - ✅ Sprint 1 - Ingestão de dados (Pronto)
 - ✅ Sprint 2 - Classificação automática (Pronto)
 - ✅ Sprint 3 - Motor de cashback e Portabilidade (Pronto)
+- ✅ Sprint 4 - Dashboard Interativo de Cashback (Pronto)

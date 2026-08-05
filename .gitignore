@@ -11,3 +11,4 @@ extraction_report.json
 classification_metrics.json
 validation_stats.json
 validacao_ingestao.xlsx
+streamlit.log
